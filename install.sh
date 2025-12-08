@@ -8,9 +8,9 @@
 #   This script installs CasaOS to your system.
 #   Usage:
 #
-#   	$ wget -qO- https://get.casaos.io/ | bash
-#   	  or
-#   	$ curl -fsSL https://get.casaos.io/ | bash
+#       $ wget -qO- https://get.casaos.io/ | bash
+#         or
+#       $ curl -fsSL https://get.casaos.io/ | bash
 #
 #   In automated environments, you may want to run as root.
 #   If using curl, we recommend using the -fsSL flags.
@@ -86,11 +86,11 @@ readonly DEVMON_CONF_PATH=/etc/conf.d/devmon
 # COLORS
 readonly COLOUR_RESET='\e[0m'
 readonly aCOLOUR=(
-    '\e[38;5;154m' # green  	| Lines, bullets and separators
-    '\e[1m'        # Bold white	| Main descriptions
-    '\e[90m'       # Grey		| Credits
-    '\e[91m'       # Red		| Update notifications Alert
-    '\e[33m'       # Yellow		| Emphasis
+    '\e[38;5;154m' # green      | Lines, bullets and separators
+    '\e[1m'        # Bold white | Main descriptions
+    '\e[90m'       # Grey       | Credits
+    '\e[91m'       # Red        | Update notifications Alert
+    '\e[33m'       # Yellow     | Emphasis
 )
 
 readonly GREEN_LINE=" ${aCOLOUR[0]}─────────────────────────────────────────────────────$COLOUR_RESET"
@@ -112,17 +112,6 @@ onCtrlC() {
 ###############################################################################
 # Helpers                                                                     #
 ###############################################################################
-
-#######################################
-# Custom printing function
-# Globals:
-#   None
-# Arguments:
-#   $1 0:OK   1:FAILED  2:INFO  3:NOTICE
-#   message
-# Returns:
-#   None
-#######################################
 
 Show() {
     # OK
@@ -181,8 +170,6 @@ exist_file() {
 # FUNCTIONS                                                                   #
 ###############################################################################
 
-
-
 # 0 Get download url domain
 # To solve the problem that Chinese users cannot access github.
 Get_Download_Url_Domain() {
@@ -216,26 +203,26 @@ Check_Arch() {
     Show 0 "Your hardware architecture is : $UNAME_M"
     CASA_PACKAGES=(
         "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.9-alpha4/linux-${TARGET_ARCH}-casaos-gateway-v0.4.9-alpha4.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.4-3-alpha2/linux-${TARGET_ARCH}-casaos-message-bus-v0.4.4-3-alpha2.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-UserService/releases/download/v0.4.8/linux-${TARGET_ARCH}-casaos-user-service-v0.4.8.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.4/linux-${TARGET_ARCH}-casaos-local-storage-v0.4.4.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.10-alpha2/linux-${TARGET_ARCH}-casaos-app-management-v0.4.10-alpha2.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS/releases/download/v0.4.15/linux-${TARGET_ARCH}-casaos-v0.4.15.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-CLI/releases/download/v0.4.4-3-alpha1/linux-${TARGET_ARCH}-casaos-cli-v0.4.4-3-alpha1.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-UI/releases/download/v0.4.25/linux-all-casaos-v0.4.25.tar.gz"
-"${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-AppStore/releases/download/v0.4.5/linux-all-appstore-v0.4.5.tar.gz" 
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.4-3-alpha2/linux-${TARGET_ARCH}-casaos-message-bus-v0.4.4-3-alpha2.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-UserService/releases/download/v0.4.8/linux-${TARGET_ARCH}-casaos-user-service-v0.4.8.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.4/linux-${TARGET_ARCH}-casaos-local-storage-v0.4.4.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.10-alpha2/linux-${TARGET_ARCH}-casaos-app-management-v0.4.10-alpha2.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS/releases/download/v0.4.15/linux-${TARGET_ARCH}-casaos-v0.4.15.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-CLI/releases/download/v0.4.4-3-alpha1/linux-${TARGET_ARCH}-casaos-cli-v0.4.4-3-alpha1.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-UI/releases/download/v0.4.25/linux-all-casaos-v0.4.25.tar.gz"
+        "${CASA_DOWNLOAD_DOMAIN}IceWhaleTech/CasaOS-AppStore/releases/download/v0.4.5/linux-all-appstore-v0.4.5.tar.gz"
     )
 }
 
 # PACKAGE LIST OF CASAOS (make sure the services are in the right order)
 CASA_SERVICES=(
     "casaos-gateway.service"
-"casaos-message-bus.service"
-"casaos-user-service.service"
-"casaos-local-storage.service"
-"casaos-app-management.service"
-"rclone.service"
-"casaos.service"  # must be the last one so update from UI can work 
+    "casaos-message-bus.service"
+    "casaos-user-service.service"
+    "casaos-local-storage.service"
+    "casaos-app-management.service"
+    "rclone.service"
+    "casaos.service"  # must be the last one so update from UI can work 
 )
 
 # 2 Check Distribution
@@ -488,6 +475,37 @@ Install_Docker() {
     fi
 }
 
+###############################################################################
+# Docker API override for CasaOS                                             #
+###############################################################################
+
+Apply_Docker_API_Override() {
+    Show 2 "Applying Docker API compatibility override for CasaOS..."
+    local override_dir="/etc/systemd/system/docker.service.d"
+    local override_file="${override_dir}/override.conf"
+
+    ${sudo_cmd} mkdir -p "${override_dir}" || Show 3 "Failed to create ${override_dir} (non-fatal)."
+
+    ${sudo_cmd} tee "${override_file}" >/dev/null <<'EOF'
+[Service]
+Environment=DOCKER_MIN_API_VERSION=1.24
+EOF
+
+    Show 0 "Docker API override written to ${override_file}"
+
+    # Reload systemd and restart Docker to apply the override
+    ${sudo_cmd} systemctl daemon-reload || Show 3 "systemd daemon-reload failed (non-fatal)."
+    if ! ${sudo_cmd} systemctl restart docker; then
+        Show 3 "Failed to restart Docker after API override. Please check 'systemctl status docker'."
+    else
+        Show 0 "Docker restarted with API override. CasaOS should now be able to talk to newer Docker versions."
+    fi
+}
+
+###############################################################################
+# Rclone & other components                                                  #
+###############################################################################
+
 #Install Rclone
 Install_rclone_from_source() {
   ${sudo_cmd} wget -qO ./install.sh https://rclone.org/install.sh
@@ -725,11 +743,11 @@ Welcome_Banner() {
 #Usage
 usage() {
     cat <<-EOF
-		Usage: install.sh [options]
-		Valid options are:
-		    -p <build_dir>          Specify build directory (Local install)
-		    -h                      Show this help message and exit
-	EOF
+        Usage: install.sh [options]
+        Valid options are:
+            -p <build_dir>          Specify build directory (Local install)
+            -h                      Show this help message and exit
+EOF
     exit "$1"
 }
 
@@ -770,7 +788,6 @@ Check_Dependency_Installation
 # Step 6: Check And Install Docker
 Check_Docker_Install
 
-
 # Step 7: Configuration Addon
 Configuration_Addons
 
@@ -783,6 +800,5 @@ Check_Service_status
 # Step 10: Clear Term and Show Welcome Banner
 Welcome_Banner
 
-# Step 11: Run BigBear CasaOS Fix
-curl -fsSL https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/casaos-fix-docker-api-version/run.sh | bash
-
+# Step 11: Apply Docker API compatibility override (no BigBear script)
+Apply_Docker_API_Override
