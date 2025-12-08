@@ -15,9 +15,9 @@
 #   In automated environments, you may want to run as root.
 #   If using curl, we recommend using the -fsSL flags.
 #
-#   This only work on  Linux systems. Please
-#   open an issue if you notice any bugs.
+#   This only works on Linux systems.
 #
+
 clear
 echo -e "\e[0m\c"
 
@@ -32,6 +32,7 @@ echo '
                                       
    --- Made by IceWhale with YOU ---
 '
+
 echo ""
 echo -e "\e[1;31m**************************************************************\e[0m"
 echo -e "\e[1;31m**                      NOT FOR PUBLIC USE                  **\e[0m"
@@ -48,6 +49,7 @@ echo "This script is intended for testing and development purposes only."
 echo "CasaOS App Store apps may still rely on older Docker API behaviour."
 echo ""
 echo -e "\e[33mContinuing automatically in 10 seconds...\e[0m"
+
 sleep 10
 echo ""
 
