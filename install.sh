@@ -37,18 +37,18 @@ echo -e "\e[1;31m**************************************************************\
 echo -e "\e[1;31m**                      NOT FOR PUBLIC USE                  **\e[0m"
 echo -e "\e[1;31m**************************************************************\e[0m"
 echo ""
-echo -e "\e[1mCustom CasaOS Installer (v0.4.16 - Experimental) by Sabitech\e[0m"
+echo -e "\e[1mThis is a customised CasaOS Installer (v0.4.16 - experimental).\e[0m"
 echo ""
-echo "This installer has been specially modified to:"
-echo "  • Install the latest available Docker engine instead of Docker 24.0.7"
-echo "  • Apply a Docker API compatibility override for newer Docker versions"
-echo "  • Allow CasaOS services and baked-in apps to work with modern Docker"
+echo "It has been modified to:"
+echo "  • Install the latest available Docker engine (not 24.0.7)"
+echo "  • Apply a Docker API compatibility override"
+echo "  • Allow CasaOS to communicate with newer Docker versions"
 echo ""
-echo "This script is intended for testing and development purposes only."
-echo "CasaOS App Store apps may still rely on older Docker API behaviour."
+echo "This installer is intended for testing and development only."
+echo "CasaOS App Store apps may rely on older Docker API behaviour."
 echo ""
-echo -e "\e[33mContinuing automatically in 10 seconds...\e[0m"
-sleep 10
+echo -e "\e[33mPress ENTER to continue, or CTRL+C to cancel...\e[0m"
+read
 echo ""
 
 export PATH=/usr/sbin:$PATH
