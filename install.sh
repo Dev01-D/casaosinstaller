@@ -32,24 +32,37 @@ echo '
                                       
    --- Made by IceWhale with YOU ---
 '
-echo ""
-echo -e "\e[1;31m**************************************************************\e[0m"
-echo -e "\e[1;31m**                      NOT FOR PUBLIC USE                  **\e[0m"
-echo -e "\e[1;31m**************************************************************\e[0m"
-echo ""
-echo -e "\e[1mCustom CasaOS Installer (v0.4.15 - Experimental) by Sabitech\e[0m"
-echo ""
-echo "This installer has been specially modified to:"
-echo "  • Install the latest available Docker engine instead of Docker 24.0.7"
-echo "  • Apply a Docker API compatibility override for newer Docker versions"
-echo "  • Allow CasaOS services and baked-in apps to work with modern Docker"
-echo ""
-echo "This script is intended for testing and development purposes only."
-echo "CasaOS App Store apps may still rely on older Docker API behaviour."
-echo ""
-echo -e "\e[33mContinuing automatically in 10 seconds...\e[0m"
-sleep 10
-echo ""
+# --- Sabitech interactive confirmation ---
+{
+    set +e  # Prevent "set -e" from killing the script if read fails
+
+    if [ -r /dev/tty ]; then
+        echo ""
+        echo -e "\e[1;31m**************************************************************\e[0m"
+        echo -e "\e[1;31m**                      NOT FOR PUBLIC USE                  **\e[0m"
+        echo -e "\e[1;31m**************************************************************\e[0m"
+        echo ""
+        echo -e "\e[1mCustom CasaOS Installer (v0.4.16 - Experimental) by Sabitech\e[0m"
+        echo ""
+        echo "This installer has been specially modified to:"
+        echo "  • Install the latest Docker engine instead of Docker 24.0.7"
+        echo "  • Apply a Docker API compatibility override for newer Docker versions"
+        echo "  • Allow CasaOS services and baked-in apps to work with modern Docker"
+        echo ""
+        echo "This script is intended for testing and development purposes only."
+        echo "CasaOS App Store apps may still depend on older Docker behaviour."
+        echo ""
+        echo -e "\e[33mPress ENTER to continue, or CTRL+C to cancel...\e[0m"
+
+        # TRUE interactive prompt:
+        read -r </dev/tty
+        echo ""
+    fi
+
+    set -e  # Re-enable error-exit behaviour
+}
+# --- end interactive confirmation ---
+
 
 
 export PATH=/usr/sbin:$PATH
