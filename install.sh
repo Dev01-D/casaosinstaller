@@ -31,8 +31,26 @@ echo '
   \_____\__,_|___/\__,_|\____/|_____/ 
                                       
    --- Made by IceWhale with YOU ---
-   -------- Sabitech Tweaks --------
 '
+echo ""
+echo -e "\e[1;31m**************************************************************\e[0m"
+echo -e "\e[1;31m**                      NOT FOR PUBLIC USE                  **\e[0m"
+echo -e "\e[1;31m**************************************************************\e[0m"
+echo ""
+echo -e "\e[1mCustom CasaOS Installer (v0.4.16 - Experimental) by Sabitech\e[0m"
+echo ""
+echo "This installer has been specially modified to:"
+echo "  • Install the latest available Docker engine instead of Docker 24.0.7"
+echo "  • Apply a Docker API compatibility override for newer Docker versions"
+echo "  • Allow CasaOS services and baked-in apps to work with modern Docker"
+echo ""
+echo "This script is intended for testing and development purposes only."
+echo "CasaOS App Store apps may still rely on older Docker API behaviour."
+echo ""
+echo -e "\e[33mPress ENTER to continue, or CTRL+C to cancel...\e[0m"
+read
+echo ""
+
 export PATH=/usr/sbin:$PATH
 export DEBIAN_FRONTEND=noninteractive
 
