@@ -37,7 +37,7 @@ echo -e "\e[1;31m**************************************************************\
 echo -e "\e[1;31m**                      NOT FOR PUBLIC USE                  **\e[0m"
 echo -e "\e[1;31m**************************************************************\e[0m"
 echo ""
-echo -e "\e[1mCustom CasaOS Installer (v0.4.16 - Experimental) by Sabitech\e[0m"
+echo -e "\e[1mCustom CasaOS Installer (v0.4.15 - Experimental) by Sabitech\e[0m"
 echo ""
 echo "This installer has been specially modified to:"
 echo "  • Install the latest available Docker engine instead of Docker 24.0.7"
