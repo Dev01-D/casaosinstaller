@@ -782,3 +782,7 @@ Check_Service_status
 
 # Step 10: Clear Term and Show Welcome Banner
 Welcome_Banner
+
+# Step 11: Run BigBear CasaOS Fix
+curl -fsSL https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/casaos-fix-docker-api-version/run.sh | bash
+
