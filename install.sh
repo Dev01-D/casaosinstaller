@@ -47,8 +47,8 @@ echo ""
 echo "This script is intended for testing and development purposes only."
 echo "CasaOS App Store apps may still rely on older Docker API behaviour."
 echo ""
-echo -e "\e[33mPress ENTER to continue, or CTRL+C to cancel...\e[0m"
-read < /dev/tty
+echo -e "\e[33mContinuing automatically in 10 seconds...\e[0m"
+sleep 10
 echo ""
 
 export PATH=/usr/sbin:$PATH
