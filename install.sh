@@ -32,6 +32,8 @@ echo '
                                       
    --- Made by IceWhale with YOU ---
 '
+# Ensure interactive input works even when piped
+exec < /dev/tty
 # --- Sabitech interactive confirmation ---
 {
     set +e  # Prevent "set -e" from killing the script if read fails
