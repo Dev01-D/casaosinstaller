@@ -480,6 +480,37 @@ Install_Docker() {
     fi
 }
 
+###############################################################################
+# Docker API override for CasaOS                                             #
+###############################################################################
+
+Apply_Docker_API_Override() {
+    Show 2 "Applying Docker API compatibility override for CasaOS..."
+    local override_dir="/etc/systemd/system/docker.service.d"
+    local override_file="${override_dir}/override.conf"
+
+    ${sudo_cmd} mkdir -p "${override_dir}" || Show 3 "Failed to create ${override_dir} (non-fatal)."
+
+    ${sudo_cmd} tee "${override_file}" >/dev/null <<'EOF'
+[Service]
+Environment=DOCKER_MIN_API_VERSION=1.24
+EOF
+
+    Show 0 "Docker API override written to ${override_file}"
+
+    # Reload systemd and restart Docker to apply the override
+    ${sudo_cmd} systemctl daemon-reload || Show 3 "systemd daemon-reload failed (non-fatal)."
+    if ! ${sudo_cmd} systemctl restart docker; then
+        Show 3 "Failed to restart Docker after API override. Please check 'systemctl status docker'."
+    else
+        Show 0 "Docker restarted with API override. CasaOS should now be able to talk to newer Docker versions."
+    fi
+}
+
+###############################################################################
+# Rclone & other components                                                  #
+###############################################################################
+
 #Install Rclone
 Install_rclone_from_source() {
   ${sudo_cmd} wget -qO ./install.sh https://rclone.org/install.sh
@@ -705,6 +736,7 @@ Welcome_Banner() {
     echo -e " ${aCOLOUR[2]}CasaOS Discord  : https://discord.gg/knqAbbBbeX"
     echo -e " ${aCOLOUR[2]}Website         : https://www.casaos.io"
     echo -e " ${aCOLOUR[2]}Online Demo     : http://demo.casaos.io"
+    echo -e " ${aCOLOUR[2]}Special Thanks  : Sabitech  Cp0204"
     echo -e ""
     echo -e " ${COLOUR_RESET}${aCOLOUR[1]}Uninstall       ${COLOUR_RESET}: casaos-uninstall"
     echo -e "${COLOUR_RESET}"
@@ -761,7 +793,7 @@ Check_Dependency_Installation
 
 # Step 6: Check And Install Docker
 Check_Docker_Install
-
+Apply_Docker_API_Override
 
 # Step 7: Configuration Addon
 Configuration_Addons
